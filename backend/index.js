@@ -13,34 +13,6 @@ app.use(express.json());
 
 app.use("/api/products", productRoute);
 
-app.post("/api/products", async (req, res) => {
-  const product = req.body;
-
-  if (!product.name) {
-    return res
-      .status(400)
-      .json({ success: false, message: "Please provide product name!" });
-  } else if (!product.price) {
-    return res
-      .status(400)
-      .json({ success: false, message: "Please provide product price!" });
-  } else if (!product.image) {
-    return res
-      .status(400)
-      .json({ success: false, message: "Please provide product image!" });
-  }
-
-  const newProduct = new Product(product);
-
-  try {
-    await newProduct.save();
-    res.status(201).json({ success: true, data: newProduct });
-  } catch (error) {
-    console.error(`Error: ${error.message}`);
-    res.status(500).json({ success: false, message: "Server Error" });
-  }
-});
-
 app.put("/api/products/:id", async (req, res) => {
   const { id } = req.params;
   const product = req.body;
