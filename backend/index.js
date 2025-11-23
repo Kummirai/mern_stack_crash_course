@@ -11,6 +11,8 @@ app.get("/", (req, res) => {
   res.send("Server running!");
 });
 
+app.post("/", (req, res) => {});
+
 app.listen(PORT, () => {
   connectionDB();
   console.log(`Sever running on port ${PORT}`);
