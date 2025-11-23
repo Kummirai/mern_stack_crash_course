@@ -1,22 +1,20 @@
 import { Link } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
-import { CiLight } from "react-icons/ci";
+import { GiShoppingCart } from "react-icons/gi";
 
 const Navbar = () => {
   return (
-    <header className="flex items-center justify-between mx-auto">
+    <header className="flex items-center justify-between py-3">
       <Link
         to="/"
-        className="bg-blue-900 px-6 py-2 text-xl rounded-md text-white"
+        className="text-3xl font-bold text-blue-950 flex items-baseline"
       >
-        Product Store
+        <span className="">Product Store</span>
+        <GiShoppingCart className="text-2xl" />
       </Link>
       <div className="flex items-center justify-between">
-        <Link to={"/create_product"}>
-          <FaPlus className="text-white bg-blue-900 p-5 rounded-md mx-3" />
-        </Link>
-        <Link to={"/create_product"}>
-          <CiLight className="text-white bg-blue-900 p-5 rounded-md" />
+        <Link to={"/create_product"} className="text-blue-950">
+          <FaPlus className=" bg-blue-200 p-5 rounded-md mx-3" />
         </Link>
       </div>
     </header>

@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="p-5 max-w-5xl">
+    <div className="p-5 max-w-5xl h-screen mx-auto">
       <Navbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
