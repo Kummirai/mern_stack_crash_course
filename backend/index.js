@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import { connectionDB } from "./config/db.js";
 import Product from "./models/product.model.js";
 import mongoose from "mongoose";
+import { productRoute } from "./routes/productRoute.js";
 
 dotenv.config();
 
@@ -10,15 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
-app.get("/api/products", async (req, res) => {
-  try {
-    const products = await Product.find({});
-    res.status(200).json({ success: true, data: products });
-  } catch (error) {
-    console.error(`Error: ${error.message}`);
-    res.status(500).json({ success: false, message: "Inrenal Server Error" });
-  }
-});
+app.use("/api/products", productRoute);
 
 app.post("/api/products", async (req, res) => {
   const product = req.body;
