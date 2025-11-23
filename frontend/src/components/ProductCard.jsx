@@ -1,16 +1,29 @@
-const ProductCard = () => {
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { MdModeEdit } from "react-icons/md";
+
+const ProductCard = ({ product }) => {
   return (
-    <div className="border border-blue-100 h-68 rounded-xs">
-      <div className="p-1">
+    <div className="border border-blue-100 rounded-xs">
+      <div className="p-1 h-[200px]">
         <img
-          src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?q=80&w=872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt=""
-          className="rounded-xs"
+          src={product.image}
+          alt={product.name}
+          className="rounded-xs w-full h-full object-cover"
         />
       </div>
       <div className="p-2">
-        <h2 className="font-semibold text-blue-950 text-lg">Apple Watch</h2>
-        <h3 className="text-slate-600 font-normal">$349.99</h3>
+        <h2 className="font-semibold text-blue-950 text-lg">{product.name}</h2>
+        <h3 className="text-slate-600 font-normal">
+          ${product.price.toFixed(2)}
+        </h3>
+        <div className="flex mr-2 mt-2 items-end justify-end">
+          <button className="">
+            <RiDeleteBin6Line className=" mr-2 text-red-600 text-xl hover:text-red-500 hover:cursor-pointer" />
+          </button>
+          <button>
+            <MdModeEdit className="text-blue-900 text-xl hover:text-blue-700 hover:cursor-pointer" />
+          </button>
+        </div>
       </div>
     </div>
   );

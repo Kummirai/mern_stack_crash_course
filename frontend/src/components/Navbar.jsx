@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaPlus } from "react-icons/fa";
+import { MdAddToPhotos } from "react-icons/md";
 import { GiShoppingCart } from "react-icons/gi";
 
 const Navbar = () => {
@@ -14,7 +14,7 @@ const Navbar = () => {
       </Link>
       <div className="flex items-center justify-between">
         <Link to={"/create_product"} className="text-blue-950">
-          <FaPlus className=" bg-blue-200 p-5 rounded-md mx-3" />
+          <MdAddToPhotos className=" bg-blue-200 p-5 rounded-md mx-3" />
         </Link>
       </div>
     </header>

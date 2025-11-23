@@ -1,12 +1,15 @@
-import React from "react";
+import { useContext } from "react";
 import ProductCard from "../components/ProductCard";
+import { ProductContext } from "../App";
 
 const Homepage = () => {
+  const products = useContext(ProductContext);
+
   return (
-    <div className="mt-8 p-5 bg-blue-50 h-[80%] grid grid-cols-3 gap-3 ">
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
+    <div className="mt-8 p-5 bg-blue-50 min-h-full  grid sm:grid-cols-2 md:grid-cols-3 gap-5 mb-8 ">
+      {products.map((product) => (
+        <ProductCard product={product} key={product._id} />
+      ))}
     </div>
   );
 };
