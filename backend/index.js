@@ -13,26 +13,6 @@ app.use(express.json());
 
 app.use("/api/products", productRoute);
 
-app.put("/api/products/:id", async (req, res) => {
-  const { id } = req.params;
-  const product = req.body;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({
-      success: false,
-      message: "Invalid product id or product id not found!",
-    });
-  }
-
-  try {
-    await Product.findByIdAndUpdate(id, product, { new: true });
-    res
-      .status(200)
-      .json({ success: true, message: "Product updated successfully!" });
-  } catch (error) {
-    res.status(500).json({ success: false, message: "Internal Server Error!" });
-  }
-});
-
 app.delete("/api/products/:id", async (req, res) => {
   const { id } = req.params;
   try {
