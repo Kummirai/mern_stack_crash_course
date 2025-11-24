@@ -3,8 +3,8 @@ import { MdModeEdit } from "react-icons/md";
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="border border-blue-100 rounded-xs">
-      <div className="p-1 h-[200px]">
+    <div className=" rounded-md shadow-lg">
+      <div className="p-2 h-[200px]">
         <img
           src={product.image}
           alt={product.name}
@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
         />
       </div>
       <div className="p-2">
-        <h2 className="font-semibold text-blue-950 text-lg">{product.name}</h2>
+        <h2 className="font-semibold text-[#131212] text-lg">{product.name}</h2>
         <h3 className="text-slate-600 font-normal">
           ${product.price.toFixed(2)}
         </h3>
@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
             <RiDeleteBin6Line className=" mr-2 text-red-600 text-xl hover:text-red-500 hover:cursor-pointer" />
           </button>
           <button>
-            <MdModeEdit className="text-blue-900 text-xl hover:text-blue-700 hover:cursor-pointer" />
+            <MdModeEdit className="text-[#d4d5d2] text-xl hover:text-[#9bb3be] hover:cursor-pointer" />
           </button>
         </div>
       </div>
