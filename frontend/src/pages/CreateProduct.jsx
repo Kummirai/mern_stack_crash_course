@@ -1,14 +1,16 @@
-import { useContext } from "react";
-import { ProductContext } from "../App";
-
 const CreateProduct = ({
   handleAddProduct,
   handleNameChange,
   handleImgChange,
   handlePriceChange,
+  isEditing,
+  handleCancelEdit,
+  productImg,
+  productName,
+  productPrice,
+  handleUpdateProduct,
+  productId,
 }) => {
-  const { productName, productPrice, productImg } = useContext(ProductContext);
-
   return (
     <div className="mt-8 p-5 bg-[#fbfbfb] h-[80%] flex items-center justify-center">
       <div className="flex flex-col justify-between w-full">
@@ -47,14 +49,31 @@ const CreateProduct = ({
             />
           </div>
         </div>
-        <div className="flex items-center justify-center">
-          <button
-            className="mt-10 bg-[#131212] text-white py-3 px-10 rounded-md"
-            onClick={handleAddProduct}
-          >
-            Add Product
-          </button>
-        </div>
+        {!isEditing ? (
+          <div className="flex items-center justify-center">
+            <button
+              className="mt-10 bg-[#131212] text-white py-3 px-10 rounded-md hover:cursor-pointer"
+              onClick={handleAddProduct}
+            >
+              Add Product
+            </button>
+          </div>
+        ) : (
+          <div className="flex items-center justify-center">
+            <button
+              className="mt-10 bg-[#131212] text-white py-3 px-10 mr-2 rounded-md hover:cursor-pointer"
+              onClick={() => handleUpdateProduct(productId)}
+            >
+              Update Product
+            </button>
+            <button
+              className="mt-10 bg-[#131212] text-white py-3 px-10 rounded-md hover:cursor-pointer"
+              onClick={handleCancelEdit}
+            >
+              Cancel
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

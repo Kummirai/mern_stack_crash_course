@@ -11,6 +11,25 @@ const getAllProductsController = async (req, res) => {
   }
 };
 
+const getProductByIdController = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({
+      success: false,
+      message: "Invalid product id or product id not found!",
+    });
+  }
+
+  try {
+    const product = await Product.findById(id);
+    res.status(200).json({ success: true, data: product });
+  } catch (error) {
+    console.error(`Error: ${error.message}`);
+    res.status(500).json({ success: false, message: "Intenal Server Error" });
+  }
+};
+
 const addProductController = async (req, res) => {
   const product = req.body;
   console.log(product);
@@ -83,4 +102,5 @@ export {
   addProductController,
   updateProductController,
   deleteProductController,
+  getProductByIdController,
 };

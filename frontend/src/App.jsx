@@ -12,15 +12,93 @@ function App() {
   const [productName, setProductName] = useState();
   const [productPrice, setProductPrice] = useState();
   const [productImg, setProductImg] = useState();
+  const [isEditing, setIsEditing] = useState(false);
+  const [productId, setProductId] = useState();
 
   const navigate = useNavigate();
 
   const fetchData = async () => {
     const res = await fetch("http://localhost:3000/api/products");
     const data = await res.json();
-    console.log(data);
 
     setProducts(data.data);
+  };
+
+  const handleUpdateProduct = async (id) => {
+    const productData = {
+      name: productName,
+      price: productPrice,
+      image: productImg,
+    };
+    try {
+      const response = await fetch(`http://localhost:3000/api/products/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(productData),
+      });
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Success:", result);
+      } else {
+        console.error("Error:", response.status);
+      }
+
+      fetchData();
+      navigate("/");
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const handleEdit = async (id) => {
+    const response = await fetch(`http://localhost:3000/api/products/${id}`, {
+      method: "GET",
+    });
+    const data = await response.json();
+    setIsEditing(true);
+    navigate("/create_product");
+    setProductName(data.data.name);
+    setProductPrice(data.data.price);
+    setProductImg(data.data.image);
+    setProductId(data.data._id);
+  };
+
+  const resetInputFields = () => {
+    setProductImg("");
+    setProductName(" ");
+    setProductPrice("");
+  };
+
+  const handleIsEditing = () => {
+    setIsEditing(false);
+    resetInputFields();
+  };
+
+  const handleCancelEdit = () => {
+    setIsEditing(false);
+    resetInputFields();
+    navigate("/");
+  };
+
+  const handleDeleteProduct = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:3000/api/products/${id}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        const result = await response.json();
+        console.log("Success:", result);
+      } else {
+        console.error("Error:", response.status);
+      }
+
+      fetchData();
+      navigate("/");
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   const handleAddProduct = async () => {
@@ -30,6 +108,13 @@ function App() {
       image: productImg,
     };
     try {
+      if (
+        productData.name === " " ||
+        productData.productImg === " " ||
+        productData.price === " "
+      ) {
+        return;
+      }
       const response = await fetch("http://localhost:3000/api/products", {
         method: "POST",
         headers: {
@@ -66,13 +151,22 @@ function App() {
     fetchData();
   }, []);
 
-  const appContext = [products, productName, productPrice, productImg];
   return (
-    <ProductContext.Provider value={appContext}>
+    <ProductContext.Provider value={products}>
       <div className="p-5 max-w-5xl h-screen mx-auto">
-        <Navbar />
+        <Navbar handleIsEditing={handleIsEditing} />
         <Routes>
-          <Route path="/" element={<Homepage products={products} />} />
+          <Route
+            path="/"
+            element={
+              <Homepage
+                products={products}
+                handleDeleteProduct={handleDeleteProduct}
+                handleEdit={handleEdit}
+                setIsEditing={setIsEditing}
+              />
+            }
+          />
           <Route
             path="/create_product"
             element={
@@ -81,6 +175,13 @@ function App() {
                 handleNameChange={handleNameChange}
                 handleAddProduct={handleAddProduct}
                 handlePriceChange={handlePriceChange}
+                isEditing={isEditing}
+                handleCancelEdit={handleCancelEdit}
+                productImg={productImg}
+                productName={productName}
+                productPrice={productPrice}
+                handleUpdateProduct={handleUpdateProduct}
+                productId={productId}
               />
             }
           />
