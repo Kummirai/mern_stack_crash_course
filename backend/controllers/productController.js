@@ -13,6 +13,7 @@ const getAllProductsController = async (req, res) => {
 
 const addProductController = async (req, res) => {
   const product = req.body;
+  console.log(product);
 
   if (!product.name) {
     return res
