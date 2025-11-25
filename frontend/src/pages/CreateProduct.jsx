@@ -64,12 +64,14 @@ const CreateProduct = ({
         ) : (
           <div className="flex flex-col sm:flex-row  items-center justify-center">
             <button
+              aria-label="Delete"
               className="mt-10 bg-[black] text-white py-3 px-10 mr-2 rounded-md hover:cursor-pointer"
               onClick={() => handleUpdateProduct(productId)}
             >
               Update Product
             </button>
             <button
+              aria-label="Edit"
               className="mt-10 bg-[black] text-white py-3 px-10 rounded-md hover:cursor-pointer"
               onClick={handleCancelEdit}
             >
