@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 const corsOptions = {
-  origin: "https://admin-product-page.onrender.com/",
+  origin: ["https://admin-product-page.onrender.com/", "http://localhost:5173"],
   optionsSuccessStatus: 200,
 };
 
