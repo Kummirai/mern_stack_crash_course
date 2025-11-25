@@ -6,6 +6,8 @@ const ProductCard = ({ product, handleDeleteProduct, handleEdit }) => {
     <div className=" rounded-md shadow-lg h-fit">
       <div className="p-2 h-[200px]">
         <img
+          height={"200px"}
+          max-width={"250px"}
           loading="lazy"
           src={product.image}
           alt={product.name}
