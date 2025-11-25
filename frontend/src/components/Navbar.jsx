@@ -8,10 +8,9 @@ const Navbar = ({ handleIsEditing }) => {
       <Link
         to="/"
         onClick={handleIsEditing}
-        className="text-3xl font-bold text-[black] flex items-baseline"
+        className="text-xs sm:text-3xl font-semibold text-[black] flex items-baseline"
       >
         <span className="">Admin Product Management</span>
-        <GiShoppingCart className="text-2xl" />
       </Link>
       <div className="flex items-center justify-between">
         <Link to={"/create_product"} onClick={handleIsEditing}>

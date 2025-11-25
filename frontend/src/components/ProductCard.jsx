@@ -12,13 +12,13 @@ const ProductCard = ({ product, handleDeleteProduct, handleEdit }) => {
         />
       </div>
       <div className="p-2">
-        <h2 className="font-semibold text-[black] text-lg line-clamp-1">
+        <h2 className="font-semibold text-[black] text-xs sm:text-lg line-clamp-1">
           {product.name}
         </h2>
         <h3 className="text-slate-600 font-normal">
           ${product.price?.toFixed(2)}
         </h3>
-        <div className="flex mr-2 mt-2 items-end justify-end pb-2">
+        <div className="flex flex-col sm:flex-row mr-2 mt-2 items-end justify-end pb-2">
           <button className="">
             <RiDeleteBin6Line
               onClick={() => handleDeleteProduct(product._id)}
