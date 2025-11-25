@@ -44,7 +44,7 @@ const CreateProduct = ({
           <div className="w-full">
             <input
               type="text"
-              name=""
+              loading="lazy"
               onChange={(e) => handleImgChange(e)}
               className="border border-[#d4d5d2] outline-[#9bb3be] rounded-lg min-w-full max-w-2xl p-3 text-[black] mb-5"
               placeholder="Product image url"
