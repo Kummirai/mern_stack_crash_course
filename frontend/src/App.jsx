@@ -14,8 +14,16 @@ function App() {
   const [productImg, setProductImg] = useState();
   const [isEditing, setIsEditing] = useState(false);
   const [productId, setProductId] = useState();
+  const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
+
+  const feedbackMessage = (result) => {
+    setMessage(result);
+    setTimeout(() => {
+      setMessage("");
+    }, 1500);
+  };
 
   const fetchData = async () => {
     const res = await fetch("http://localhost:3000/api/products");
@@ -40,9 +48,10 @@ function App() {
       });
       if (response.ok) {
         const result = await response.json();
-        console.log("Success:", result);
+        feedbackMessage(result);
       } else {
         console.error("Error:", response.status);
+        feedbackMessage(result);
       }
 
       fetchData();
@@ -90,8 +99,10 @@ function App() {
       if (response.ok) {
         const result = await response.json();
         console.log("Success:", result);
+        feedbackMessage(result);
       } else {
         console.error("Error:", response.status);
+        feedbackMessage(result);
       }
 
       fetchData();
@@ -108,13 +119,6 @@ function App() {
       image: productImg,
     };
     try {
-      if (
-        productData.name === " " ||
-        productData.productImg === " " ||
-        productData.price === " "
-      ) {
-        return;
-      }
       const response = await fetch("http://localhost:3000/api/products", {
         method: "POST",
         headers: {
@@ -126,12 +130,15 @@ function App() {
       if (response.ok) {
         const result = await response.json();
         console.log("Success:", result);
+        feedbackMessage(result);
+        fetchData();
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
       } else {
-        console.error("Error:", response.status);
+        const result = await response.json();
+        feedbackMessage(result);
       }
-
-      fetchData();
-      navigate("/");
     } catch (error) {
       console.error("Error:", error);
     }
@@ -153,7 +160,7 @@ function App() {
 
   return (
     <ProductContext.Provider value={products}>
-      <div className="p-5 max-w-5xl h-screen mx-auto">
+      <div className="p-5 max-w-5xl h-screen mx-auto relative">
         <Navbar handleIsEditing={handleIsEditing} />
         <Routes>
           <Route
@@ -164,6 +171,7 @@ function App() {
                 handleDeleteProduct={handleDeleteProduct}
                 handleEdit={handleEdit}
                 setIsEditing={setIsEditing}
+                message={message}
               />
             }
           />
@@ -182,6 +190,7 @@ function App() {
                 productPrice={productPrice}
                 handleUpdateProduct={handleUpdateProduct}
                 productId={productId}
+                message={message}
               />
             }
           />

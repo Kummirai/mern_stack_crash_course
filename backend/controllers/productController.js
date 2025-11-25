@@ -32,7 +32,6 @@ const getProductByIdController = async (req, res) => {
 
 const addProductController = async (req, res) => {
   const product = req.body;
-  console.log(product);
 
   if (!product.name) {
     return res
@@ -52,7 +51,11 @@ const addProductController = async (req, res) => {
 
   try {
     await newProduct.save();
-    res.status(201).json({ success: true, data: newProduct });
+    res.status(201).json({
+      success: true,
+      data: newProduct,
+      message: "Product successfully added!",
+    });
   } catch (error) {
     console.error(`Error: ${error.message}`);
     res.status(500).json({ success: false, message: "Server Error" });

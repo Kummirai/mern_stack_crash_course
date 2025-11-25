@@ -1,3 +1,5 @@
+import Message from "../components/Message";
+
 const CreateProduct = ({
   handleAddProduct,
   handleNameChange,
@@ -10,11 +12,12 @@ const CreateProduct = ({
   productPrice,
   handleUpdateProduct,
   productId,
+  message,
 }) => {
   return (
     <div className="mt-8 p-5 bg-[#fbfbfb] h-[80%] flex items-center justify-center">
       <div className="flex flex-col justify-between w-full">
-        <h2 className="text-[#131212] mb-8 text-center text-3xl font-semibold ">
+        <h2 className="text-[black] mb-8 text-center text-3xl font-semibold ">
           Create New Product
         </h2>
         <div className="sm:px-45 flex flex-col items-center">
@@ -23,7 +26,7 @@ const CreateProduct = ({
               type="text"
               name=""
               onChange={(e) => handleNameChange(e)}
-              className="border border-[#d4d5d2] outline-[#9bb3be] rounded-lg min-w-full max-w-2xl p-3 text-[#131212] mb-5"
+              className="border border-[#d4d5d2] outline-[#9bb3be] rounded-lg min-w-full max-w-2xl p-3 text-[black] mb-5"
               placeholder="Product name"
               value={productName}
             />
@@ -33,7 +36,7 @@ const CreateProduct = ({
               type="text"
               name=""
               onChange={(e) => handlePriceChange(e)}
-              className="border border-[#d4d5d2] outline-[#9bb3be] rounded-lg min-w-full max-w-2xl p-3 text-[#131212] mb-5"
+              className="border border-[#d4d5d2] outline-[#9bb3be] rounded-lg min-w-full max-w-2xl p-3 text-[black] mb-5"
               placeholder="Product price"
               value={productPrice}
             />
@@ -43,7 +46,7 @@ const CreateProduct = ({
               type="text"
               name=""
               onChange={(e) => handleImgChange(e)}
-              className="border border-[#d4d5d2] outline-[#9bb3be] rounded-lg min-w-full max-w-2xl p-3 text-[#131212] mb-5"
+              className="border border-[#d4d5d2] outline-[#9bb3be] rounded-lg min-w-full max-w-2xl p-3 text-[black] mb-5"
               placeholder="Product image url"
               value={productImg}
             />
@@ -52,7 +55,7 @@ const CreateProduct = ({
         {!isEditing ? (
           <div className="flex items-center justify-center">
             <button
-              className="mt-10 bg-[#131212] text-white py-3 px-10 rounded-md hover:cursor-pointer"
+              className="mt-10 bg-[black] text-white py-3 px-10 rounded-md hover:cursor-pointer"
               onClick={handleAddProduct}
             >
               Add Product
@@ -61,13 +64,13 @@ const CreateProduct = ({
         ) : (
           <div className="flex items-center justify-center">
             <button
-              className="mt-10 bg-[#131212] text-white py-3 px-10 mr-2 rounded-md hover:cursor-pointer"
+              className="mt-10 bg-[black] text-white py-3 px-10 mr-2 rounded-md hover:cursor-pointer"
               onClick={() => handleUpdateProduct(productId)}
             >
               Update Product
             </button>
             <button
-              className="mt-10 bg-[#131212] text-white py-3 px-10 rounded-md hover:cursor-pointer"
+              className="mt-10 bg-[black] text-white py-3 px-10 rounded-md hover:cursor-pointer"
               onClick={handleCancelEdit}
             >
               Cancel
@@ -75,6 +78,7 @@ const CreateProduct = ({
           </div>
         )}
       </div>
+      <Message message={message} />
     </div>
   );
 };

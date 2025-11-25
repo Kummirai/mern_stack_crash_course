@@ -12,7 +12,7 @@ const ProductCard = ({ product, handleDeleteProduct, handleEdit }) => {
         />
       </div>
       <div className="p-2">
-        <h2 className="font-semibold text-[#131212] text-lg line-clamp-1">
+        <h2 className="font-semibold text-[black] text-lg line-clamp-1">
           {product.name}
         </h2>
         <h3 className="text-slate-600 font-normal">
