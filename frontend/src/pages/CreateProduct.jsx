@@ -62,7 +62,7 @@ const CreateProduct = ({
             </button>
           </div>
         ) : (
-          <div className="flex items-center justify-center">
+          <div className="flex flex-col sm:flex-row  items-center justify-center">
             <button
               className="mt-10 bg-[black] text-white py-3 px-10 mr-2 rounded-md hover:cursor-pointer"
               onClick={() => handleUpdateProduct(productId)}

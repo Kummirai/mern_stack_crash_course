@@ -18,7 +18,7 @@ const ProductCard = ({ product, handleDeleteProduct, handleEdit }) => {
         <h3 className=" text-[#000000] font-semibold">
           ${product.price?.toFixed(2)}
         </h3>
-        <div className="flex flex-col sm:flex-row mr-2 mt-2 items-end justify-end pb-2">
+        <div className="flex mr-2 mt-2 items-end justify-end pb-2">
           <button className="">
             <RiDeleteBin6Line
               onClick={() => handleDeleteProduct(product._id)}
