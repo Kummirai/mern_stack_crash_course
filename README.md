@@ -33,4 +33,27 @@ A modern fullstack web application for managing products with a React frontend a
 - **CORS** enabled for cross-origin requests
 - **Environment** variables configuration
 
-## 📁 Project Structure
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- MongoDB (local or Atlas)
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd mern-stack-crash-course
+
+
+### 📚 API Endpoints
+- Method	Endpoint	Description
+- GET	/api/products	Get all products
+- GET	/api/products/:id	Get single product
+- POST	/api/products	Create new product
+- PUT	/api/products/:id	Update product
+- DELETE	/api/products/:id	Delete product
