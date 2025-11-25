@@ -26,7 +26,7 @@ function App() {
   };
 
   const fetchData = async () => {
-    const res = await fetch("http://localhost:3000/api/products");
+    const res = await fetch("/api/products");
     const data = await res.json();
 
     setProducts(data.data);
@@ -39,7 +39,7 @@ function App() {
       image: productImg,
     };
     try {
-      const response = await fetch(`http://localhost:3000/api/products/${id}`, {
+      const response = await fetch(`/api/products/${id}`, {
         method: "PUT",
         headers: {
           "Content-type": "application/json",
@@ -63,7 +63,7 @@ function App() {
   };
 
   const handleEdit = async (id) => {
-    const response = await fetch(`http://localhost:3000/api/products/${id}`, {
+    const response = await fetch(`/api/products/${id}`, {
       method: "GET",
     });
     const data = await response.json();
@@ -94,7 +94,7 @@ function App() {
 
   const handleDeleteProduct = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/products/${id}`, {
+      const response = await fetch(`/api/products/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {
@@ -120,7 +120,7 @@ function App() {
       image: productImg,
     };
     try {
-      const response = await fetch("http://localhost:3000/api/products", {
+      const response = await fetch("/api/products", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
