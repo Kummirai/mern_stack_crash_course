@@ -78,7 +78,10 @@ const updateProductController = async (req, res) => {
       .status(200)
       .json({ success: true, message: "Product updated successfully!" });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Internal Server Error!" });
+    res.status(500).json({
+      success: false,
+      message: "Product update failed, check product details!",
+    });
   }
 };
 

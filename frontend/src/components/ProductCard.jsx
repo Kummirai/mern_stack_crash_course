@@ -16,7 +16,7 @@ const ProductCard = ({ product, handleDeleteProduct, handleEdit }) => {
           {product.name}
         </h2>
         <h3 className="text-slate-600 font-normal">
-          ${product.price.toFixed(2)}
+          ${product.price?.toFixed(2)}
         </h3>
         <div className="flex mr-2 mt-2 items-end justify-end pb-2">
           <button className="">

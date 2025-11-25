@@ -49,13 +49,14 @@ function App() {
       if (response.ok) {
         const result = await response.json();
         feedbackMessage(result);
+        fetchData();
+        setTimeout(() => {
+          navigate("/");
+        }, 1800);
       } else {
-        console.error("Error:", response.status);
+        const result = await response.json();
         feedbackMessage(result);
       }
-
-      fetchData();
-      navigate("/");
     } catch (error) {
       console.error("Error:", error);
     }
