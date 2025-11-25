@@ -19,13 +19,13 @@ const ProductCard = ({ product, handleDeleteProduct, handleEdit }) => {
           ${product.price?.toFixed(2)}
         </h3>
         <div className="flex mr-2 mt-2 items-end justify-end pb-2">
-          <button className="">
+          <button aria-label="Delete Product">
             <RiDeleteBin6Line
               onClick={() => handleDeleteProduct(product._id)}
               className=" mr-2 text-red-600 text-xl hover:text-red-500 hover:cursor-pointer"
             />
           </button>
-          <button>
+          <button aria-label="Edit Product">
             <MdModeEdit
               className="text-[#d4d5d2] text-xl hover:text-[#9bb3be] hover:cursor-pointer"
               onClick={() => handleEdit(product._id)}
