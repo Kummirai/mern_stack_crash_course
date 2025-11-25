@@ -8,7 +8,7 @@ const Navbar = ({ handleIsEditing }) => {
       <Link
         to="/"
         onClick={handleIsEditing}
-        className="text-xs sm:text-3xl font-semibold text-[black] flex items-baseline"
+        className="text-xl sm:text-[24px] font-semibold text-[black] flex items-baseline"
       >
         <span className="">Admin Product Management</span>
       </Link>

@@ -12,10 +12,10 @@ const ProductCard = ({ product, handleDeleteProduct, handleEdit }) => {
         />
       </div>
       <div className="p-2">
-        <h2 className="font-semibold text-[black] text-xs sm:text-lg line-clamp-1">
+        <h2 className="text-slate-600  text-[0.95rem] line-clamp-1">
           {product.name}
         </h2>
-        <h3 className="text-slate-600 font-normal">
+        <h3 className=" text-[#000000] font-semibold">
           ${product.price?.toFixed(2)}
         </h3>
         <div className="flex flex-col sm:flex-row mr-2 mt-2 items-end justify-end pb-2">
